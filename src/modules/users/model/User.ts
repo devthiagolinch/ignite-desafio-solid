@@ -5,13 +5,16 @@ class User {
   id?: string;
   name: string;
   email: string;
-  admin: boolean;
+  admin?: boolean;
   created_at: Date;
-  updated_at: Date;
+  updated_at?: Date;
 
   constructor() {
     if(!this.id){
       this.id = uuidV4();
+    }
+    if(!this.admin){
+      this.admin = false
     }
   }
 }
