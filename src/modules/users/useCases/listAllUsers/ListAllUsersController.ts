@@ -9,13 +9,13 @@ class ListAllUsersController {
     const user_id = request.headers["user_id"].toString();
     console.log(user_id)
 
-    const users = this.listAllUsersUseCase.execute({user_id})
+    try {
+      const users = this.listAllUsersUseCase.execute({user_id})
 
-    if(Error.prototype.message){
-      return response.status(400).json({message: Error.prototype.message})
+      return response.status(201).json(users)
+    } catch (error) {
+      return response.status(400).json({error: error})
     }
-
-    return response.status(201).json(users)
   }
 }
 
